@@ -1,0 +1,78 @@
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.clearfix{
+    clear:both;
+    float:none;
+}
+
+.menu-top {
+    height: 120px;
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid #ccc;
+    border-top: 5px solid #61dafb;
+
+    &__center {
+        width: 75%;
+        margin: 0px auto;
+
+        &__logo {
+            // width: 30%;
+            font-size: 30px;
+            float: left;
+            margin-top: 35px;
+
+            &-left {
+                display: block;
+                float: left;
+                height: 60px;
+                margin-top: -9px;
+                margin-right: -10px;
+                animation: spin infinite 30s linear;
+            }
+
+            &-brand {
+                display: block;
+                margin: 0px;
+                float: left;
+                cursor: default;
+            }
+        }
+    }
+}
+
+.slider {
+    cursor: default;
+    width: 100%;
+    height: 280px;
+    color: white;
+    text-shadow: 0px 0px 5px #444;
+    margin-bottom: 50px;
+    background: rgb(183,222,237);
+	background: -moz-radial-gradient(center, ellipse cover, rgb(183,222,237) 0%, rgb(113,206,239) 1%, rgb(33,180,226) 51%, rgb(77,165,240) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgb(183,222,237)), color-stop(1%, rgb(113,206,239)), color-stop(51%, rgb(33,180,226)), color-stop(100%, rgb(77,165,240)));
+	background: -webkit-radial-gradient(center, ellipse cover, rgb(183,222,237) 0%, rgb(113,206,239) 1%, rgb(33,180,226) 51%, rgb(77,165,240) 100%);
+	background: -o-radial-gradient(center, ellipse cover, rgb(183,222,237) 0%, rgb(113,206,239) 1%, rgb(33,180,226) 51%, rgb(77,165,240) 100%);
+	background: -ms-radial-gradient(center, ellipse cover, rgb(183,222,237) 0%, rgb(113,206,239) 1%, rgb(33,180,226) 51%, rgb(77,165,240) 100%);
+	background: radial-gradient(ellipse at center, rgb(183,222,237) 0%, rgb(113,206,239) 1%, rgb(33,180,226) 51%, rgb(77,165,240) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#4da5f0', GradientType=1 );
+
+    h1 {
+        margin-top: 0.2px;
+        padding: 0px;
+        padding-top: 130px;
+        text-align: center;
+    }
+}
+
+.chart {
+    width: 720px;
+    margin: 0px auto;
+}
