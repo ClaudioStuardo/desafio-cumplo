@@ -34,12 +34,19 @@ function LineChart() {
     };
 
     const mostrarFecha = async (from, to) => {
-        const fromYear = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(from)
-        const fromMonth = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(from)
-        const fromDay = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(from)
-        const toYear = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(to)
-        const toMonth = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(to)
-        const toDay = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(to)
+        const fromYear = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(from);
+        const fromMonth = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(from);
+        const fromDay = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(from);
+        const toYear = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(to);
+        const toMonth = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(to);
+        const toDay = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(to);
+
+        Swal.fire({
+            title: 'Cargando',
+            text: 'Esperando respuesta del servidor',
+            icon: 'info',
+            showConfirmButton: false
+        });
 
         const result = await getDolarApi(fromYear, fromMonth, fromDay, toYear, toMonth, toDay);
 
@@ -66,6 +73,29 @@ function LineChart() {
                     }
                 ]
             });
+            var totalSum = 0;
+            for(var i in dataValues) {
+                dataValues[i] = Number(dataValues[i]);
+                totalSum += dataValues[i];
+            }
+            var numsCnt = dataValues.length;
+            var avg = totalSum / numsCnt;
+            var avgFix = avg.toFixed(2);
+            const maxValue = Math.max(...dataValues);
+            const minValue = Math.min(...dataValues);
+            Swal.fire({
+                title: '<strong>Estadísticas del dolar</strong>',
+                icon: 'info',
+                html:
+                  'Promedio: ' + avgFix + '<br/>' +
+                  'Valor máximo: ' + maxValue + '<br/>' +
+                  'Valor mínimo: ' + minValue,
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: true,
+                confirmButtonText:
+                  'Aceptar'
+              })
         }
     };
 
